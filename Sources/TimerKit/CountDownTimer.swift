@@ -3,7 +3,7 @@
 import Foundation
 
 
-open class CountDownTimer: BasicTimer {
+public class CountDownTimer: AsyncTimer {
 
     /// number of times set to fire initially
     public internal(set) var totalTimes: Int
@@ -19,7 +19,7 @@ open class CountDownTimer: BasicTimer {
     /// interval is a frequency of executing the handler,
     /// counted in seconds (rounded to milliseconds)
     public init(interval: Double,
-                delayStart: Double? = nil,
+                startDelay: Double? = nil,
                 times: Int,
                 _ queue: DispatchQueue = .main,
                 _ handler: @escaping CountDownTimerBlock) {
@@ -27,23 +27,71 @@ open class CountDownTimer: BasicTimer {
         self.totalTimes = times
         self.leftTimes = times
         super.init(interval: interval,
-                   delayStart: delayStart, queue, { _ in })
+                   startDelay: startDelay, queue, { _ in })
         
-        setHandler { (timer: CountDownTimer) in
-            if timer.leftTimes > 0 {
-                timer.leftTimes -= 1
-                handler(timer)
-            } else {
-                timer.suspend()
-            }
-        }
+        setHandler{_ in }
     }
+    
+   
+    
+    public override func setHandler(_ handler: @escaping CountDownTimerBlock) {
+        _setHandler(handler)
+    }
+    
+    public override func setHandler(_ handler: @escaping CountDownTimerBlock,
+                           _ queue: DispatchQueue) {
+        
+        _setHandler(handler, queue)
+    }
+    
+    
+    /// set handler for this timer
+    override func _setHandler<T: CountDownTimer>(_ handler: @escaping (T) -> Void) {
+        
+//        _timer.setHandler { [weak self] _ in
+//            guard let slf = self as? T else {
+//                return
+//            }
+//            if slf.leftTimes > 0 {
+//                slf.leftTimes -= 1
+//                handler(slf)
+//            } else {
+//                slf.suspend()
+//            }
+//        }
+    }
+    
+    override func _setHandler<T: CountDownTimer>(_ handler: @escaping (T) -> Void, _ queue: DispatchQueue) {
+        
+//        _timer = DispatchSource.makeTimerSource(queue: queue)
+//        // restoring interval and startDelay
+//        setTimeInterval(interval, startDelay: startDelay)
+//        setHandler(handler)
+    }
+    
+    
+    /// set handler for this timer
+//    open override func setHandler<T: CountDownTimer>(_ queue: DispatchQueue,
+//                                                     _ handler: @escaping (T) -> Void) {
+//        
+//        super.setHandler { [weak self] _ in
+//            guard let slf = self as? T else {
+//                return
+//            }
+//            if slf.leftTimes > 0 {
+//                slf.leftTimes -= 1
+//                handler(slf)
+//            } else {
+//                slf.suspend()
+//            }
+//        }
+//    }
     
     /// suspends currently running timer and starts again
     /// if interval or handler not given - reuses the last used ones
     public func restart(with times: Int? = nil,
                          interval: Double? = nil,
-                         delayStart: Double? = nil,
+                         startDelay: Double? = nil,
                         _ handler: (CountDownTimerBlock)? = nil) {
         // suspend if running
         suspend()
@@ -51,7 +99,7 @@ open class CountDownTimer: BasicTimer {
             setHandler(handler1)
         }
         if let interval1 = interval {
-            setTimeInterval(interval1, delayStart:delayStart)
+            setTimeInterval(interval1, startDelay:startDelay)
         }
         if let times1 = times {
             self.totalTimes = times1
