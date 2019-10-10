@@ -1,11 +1,10 @@
 
 
-import Foundation
-import Log
+@_exported import DateKit
 
 
 /// The timer can be used to execute periodically provided block on any queue (main, private).
-/// It can work allows scheduling resume, suspend and restart operations in future (at specific date, or after given elapsed time)
+/// It allows scheduling resume, suspend and restart operations in future (at specific date, or after given elapsed time)
 /// It also supports loop mode, in which it will restart after a given interval
 /// It can be in 2 states - running and suspended
 public class AsyncTimer: AsyncTimerP {
@@ -26,7 +25,8 @@ public class AsyncTimer: AsyncTimerP {
     
     public weak var observer: AsyncTimerObserverP?
     
-    //MARK: autostop
+    
+    //MARK: - autostop
     
     /// When set - suspends timer when elapsed time reaches this value (and this setting is the reset to nil)
     /// Time is in seconds (rounded to milliseconds)
@@ -68,7 +68,7 @@ public class AsyncTimer: AsyncTimerP {
         
         self.interval = interval
         if let delay = startDelay,
-            Self.isValid(interval: delay) {
+           Self.isValid(interval: delay) {
             self.startDelay = delay
         } else {
             self.startDelay = 0
@@ -80,7 +80,7 @@ public class AsyncTimer: AsyncTimerP {
     }
     
     
-    //MARK: resume
+    //MARK: - resume
     
     /// Resumes currently suspended timer with given paramaters
     /// - parameter interval: frequency of executing the handler, in seconds (rounded to milliseconds)
@@ -152,7 +152,7 @@ public class AsyncTimer: AsyncTimerP {
     }
     
     
-    //MARK: suspend
+    //MARK: - suspend
     
     /// Suspends timer if it's running
     /// - Returns: true if succeeded
@@ -211,7 +211,7 @@ public class AsyncTimer: AsyncTimerP {
         }
         guard isValid(futureElapsedTime: elapsedTime) else {
             L.error("Failed to suspend, invalid elapsedTime provided, \(elapsedTime)")
-                return false
+            return false
         }
         autoStopOnElapsedTime = elapsedTime
         return true
@@ -285,7 +285,7 @@ public class AsyncTimer: AsyncTimerP {
         return restart(on: Date().advanced(by: interval))
     }
     
-    //MARK: loop
+    //MARK: - loop
     
     /// Starts running timer in loop mode with given interval
     /// Timer must be in suspended state to run in loop mode
@@ -304,7 +304,7 @@ public class AsyncTimer: AsyncTimerP {
         return resume()
     }
     
-    //MARK:
+    //MARK: -
     
     /// Sets handler for this timer on main queue
     public func setHandler(_ handler: @escaping AsyncTimerBlock) {
@@ -328,7 +328,7 @@ public class AsyncTimer: AsyncTimerP {
             
             // autoStopOnDateSatisfied
             if let date = slf.autoStopOnDate,
-                Date() >= date {
+               Date() >= date {
                 
                 // reset
                 slf.shouldRestart = false
@@ -341,7 +341,7 @@ public class AsyncTimer: AsyncTimerP {
             
             // autoStopOnElapsedTimeSatisfied
             if let elapsedTime = slf.autoStopOnElapsedTime,
-                slf.elapsedTime >= elapsedTime {
+               slf.elapsedTime >= elapsedTime {
                 
                 // reset
                 slf.shouldRestart = false
@@ -354,7 +354,7 @@ public class AsyncTimer: AsyncTimerP {
             
             // loop
             if let loopInterval1 = slf.loopInterval,
-                slf.elapsedTime >= loopInterval1 {
+               slf.elapsedTime >= loopInterval1 {
                 slf.restart()
                 return
             }
@@ -383,7 +383,7 @@ public class AsyncTimer: AsyncTimerP {
             return false
         }
         if let startDelay = startDelay,
-            !Self.isValid(interval: interval) {
+           !Self.isValid(interval: interval) {
             L.error("Failed to setTimeInterval, invalid startDelay provided, \(startDelay)")
             return false
         }
@@ -428,7 +428,8 @@ public class AsyncTimer: AsyncTimerP {
         shouldRestart = false
     }
     
-    //MARK: deinit
+    
+    //MARK: - deinit
     
     deinit {
         cancel()
@@ -451,15 +452,15 @@ public class AsyncTimer: AsyncTimerP {
     //MARK: validation
     
     static func isValid(interval: Double) -> Bool {
-        return interval > 0
+        interval > 0
     }
     
     func isValid(futureElapsedTime: Double) -> Bool {
-        return elapsedTime > self.elapsedTime
+        elapsedTime > self.elapsedTime
     }
     func isValid(futureDate: Date) -> Bool {
         //TODO: also check that it's not too far away? - 1 month max?
-        return futureDate > Date()
+        futureDate > Date()
     }
 }
 
@@ -467,6 +468,6 @@ public class AsyncTimer: AsyncTimerP {
 extension Double {
     
     var milliseconds: DispatchTimeInterval {
-        return .milliseconds(Int(self * 1000))
+        .milliseconds(Int(self * 1000))
     }
 }

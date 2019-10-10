@@ -1,5 +1,4 @@
 
-import Foundation
 
 public enum TimerState {
     case running

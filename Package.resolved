@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "Base",
+        "repositoryURL": "https://github.com/bretsko/Base",
+        "state": {
+          "branch": null,
+          "revision": "52d8599a0757c5be2fa8a560dd148ffc95a70c80",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "CwlCatchException",
         "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
         "state": {
           "branch": null,
           "revision": "f809deb30dc5c9d9b78c872e553261a61177721a",
-          "version": "2.0.0-beta.1"
+          "version": "2.0.0"
         }
       },
       {
@@ -15,16 +24,25 @@
         "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
         "state": {
           "branch": null,
-          "revision": "ea422878db4e680069af320ac444183628360ab1",
-          "version": "2.0.0-beta.1"
+          "revision": "02b7a39a99c4da27abe03cab2053a9034379639f",
+          "version": "2.0.0"
         }
       },
       {
-        "package": "Log",
-        "repositoryURL": "https://github.com/bretsko/Logger",
+        "package": "DateKit",
+        "repositoryURL": "https://github.com/bretsko/DateKit",
         "state": {
           "branch": null,
-          "revision": "5fc217d492a38c004d7658cb02e96892bd2fba84",
+          "revision": "89b257471f3c994340a5edf96f60ebe984444c83",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "LocalBase",
+        "repositoryURL": "https://github.com/bretsko/LocalBase",
+        "state": {
+          "branch": null,
+          "revision": "dd197700b56317e4c8f09cc966ddf5696c33ff50",
           "version": "1.0.0"
         }
       },
@@ -33,7 +51,7 @@
         "repositoryURL": "https://github.com/bretsko/Nimble",
         "state": {
           "branch": null,
-          "revision": "a8157f3fc5c3d8861f638db9a24ebde918fa59a5",
+          "revision": "906c98b445c99a99b388c9a51d033988341809c9",
           "version": "8.0.5"
         }
       },
@@ -42,17 +60,8 @@
         "repositoryURL": "https://github.com/bretsko/Quick",
         "state": {
           "branch": null,
-          "revision": "bf28e08013957f6b28b607b028a3417066a79d2c",
+          "revision": "8e6733e5e959c86cfdfff69f31928d1f6806d702",
           "version": "2.2.1"
-        }
-      },
-      {
-        "package": "Rainbow",
-        "repositoryURL": "https://github.com/onevcat/Rainbow",
-        "state": {
-          "branch": null,
-          "revision": "9c52c1952e9b2305d4507cf473392ac2d7c9b155",
-          "version": "3.1.5"
         }
       }
     ]
