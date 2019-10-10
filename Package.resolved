@@ -7,7 +7,7 @@
         "state": {
           "branch": null,
           "revision": "f809deb30dc5c9d9b78c872e553261a61177721a",
-          "version": "2.0.0-beta.1"
+          "version": "2.0.0"
         }
       },
       {
@@ -15,25 +15,43 @@
         "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
         "state": {
           "branch": null,
-          "revision": "ea422878db4e680069af320ac444183628360ab1",
-          "version": "2.0.0-beta.1"
+          "revision": "02b7a39a99c4da27abe03cab2053a9034379639f",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "DateKit",
+        "repositoryURL": "https://github.com/bretsko/DateKit",
+        "state": {
+          "branch": null,
+          "revision": "1aaea355a09822b37fc691b44a9c3d54e3950537",
+          "version": "7.0.0"
         }
       },
       {
         "package": "Log",
-        "repositoryURL": "https://github.com/bretsko/Logger",
+        "repositoryURL": "https://github.com/bretsko/Log",
         "state": {
           "branch": null,
-          "revision": "5fc217d492a38c004d7658cb02e96892bd2fba84",
+          "revision": "fb9ee78717e3ce41cf9ec9a16cab24a144dd6056",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "MinimalBase",
+        "repositoryURL": "https://github.com/bretsko/MinimalBase",
+        "state": {
+          "branch": null,
+          "revision": "5590238ce5126677982a6b5300949aabf1474a39",
           "version": "1.0.0"
         }
       },
       {
         "package": "Nimble",
-        "repositoryURL": "https://github.com/bretsko/Nimble",
+        "repositoryURL": "https://github.com/bretsko/Nimble.git",
         "state": {
           "branch": null,
-          "revision": "a8157f3fc5c3d8861f638db9a24ebde918fa59a5",
+          "revision": "906c98b445c99a99b388c9a51d033988341809c9",
           "version": "8.0.5"
         }
       },
@@ -42,17 +60,8 @@
         "repositoryURL": "https://github.com/bretsko/Quick",
         "state": {
           "branch": null,
-          "revision": "bf28e08013957f6b28b607b028a3417066a79d2c",
+          "revision": "8e6733e5e959c86cfdfff69f31928d1f6806d702",
           "version": "2.2.1"
-        }
-      },
-      {
-        "package": "Rainbow",
-        "repositoryURL": "https://github.com/onevcat/Rainbow",
-        "state": {
-          "branch": null,
-          "revision": "9c52c1952e9b2305d4507cf473392ac2d7c9b155",
-          "version": "3.1.5"
         }
       }
     ]
