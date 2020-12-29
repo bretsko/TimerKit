@@ -10,4 +10,4 @@
 [SPMBadge]: https://img.shields.io/badge/SPM-compatible-brightgreen.svg
 [SPMLink]: https://github.com/apple/swift-package-manager
 
-Timer which can be used in background, supports countdown, throttling 
+Timer which can be used in background, supports countdown, throttling. See details in wiki.  
